@@ -6,8 +6,8 @@
 
 1. Create a `.env.local` file in the root of the project and add the following
 
-```bash
-  cp .env.local.example .env.local
+```bashf
+  cp .env.example .env.local
 ```
 
 2. Generate auth secret key
