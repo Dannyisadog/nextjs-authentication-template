@@ -1,35 +1,59 @@
 import SignoutButton from "@/components/client/SignoutButton";
 import styles from "./page.module.css";
-import GoogleSigninButton from "@/components/client/GoogleSigninButton";
 import { auth } from "@/auth";
-import Image from "next/image";
+import { User } from "@prisma/client";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const session = await auth();
+  const users: User[] = await fetch("http://localhost:3000/api/users").then(
+    (res) => res.json()
+  );
 
-  if (session) {
-    return (
-      <main className={styles.main}>
-        <p>Signed in as {session.user?.email}</p>
-        <Image
-          style={{
-            marginTop: "1rem",
-            borderRadius: "100px",
-          }}
-          width={120}
-          height={120}
-          src={session.user?.image as string}
-          alt={session.user?.email as string}
-        />
-        <SignoutButton />
-      </main>
-    );
+  if (!session) {
+    redirect("/signin");
   }
 
   return (
-    <main className={styles.main}>
-      <p>Unauthenticated</p>
-      <GoogleSigninButton />
-    </main>
+    <div className={styles.auth_container}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <p
+          style={{
+            marginTop: "1rem",
+          }}
+        >
+          {session.user?.name}
+        </p>
+        <div>
+          <SignoutButton />
+        </div>
+      </div>
+      <table
+        style={{
+          marginLeft: 64,
+        }}
+      >
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.email}</td>
+              <td>{user.name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
