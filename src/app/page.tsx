@@ -1,7 +1,7 @@
 import SignoutButton from "components/client/SignoutButton";
-import styles from "./page.module.css";
 import { auth } from "auth";
 import { redirect } from "next/navigation";
+import { Stack, Typography } from "@mui/material";
 
 export default async function Home() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -13,45 +13,24 @@ export default async function Home() {
   }
 
   return (
-    <div className={styles.auth_container}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <p
-          style={{
-            marginTop: "1rem",
-          }}
-        >
-          {session.user?.name}
-        </p>
-        <div>
-          <SignoutButton />
-        </div>
-      </div>
-      <table
-        style={{
-          marginLeft: 64,
-        }}
-      >
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user: any) => (
-            <tr key={user.id}>
-              <td>{user.email}</td>
-              <td>{user.name}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Stack
+      height="100vh"
+      justifyContent="center"
+      margin="auto"
+      maxWidth={400}
+      spacing={2}
+      px={2}
+    >
+      <Typography variant="h5">Basic Info</Typography>
+      <Stack direction="row" spacing={2}>
+        <Typography textAlign="center">Account:</Typography>
+        <Typography textAlign="center">{session.user?.email}</Typography>
+      </Stack>
+      <Stack direction="row" spacing={2}>
+        <Typography textAlign="center">Name:</Typography>
+        <Typography textAlign="center">{session.user?.name}</Typography>
+      </Stack>
+      <SignoutButton />
+    </Stack>
   );
 }
