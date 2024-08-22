@@ -1,8 +1,9 @@
 import { auth } from "auth";
-import styles from "../page.module.css";
 import GoogleSigninButton from "components/client/GoogleSigninButton";
 import { SigninForm } from "components/client/SigninForm";
 import { redirect } from "next/navigation";
+import { Stack } from "@mui/material";
+import Title from "components/client/Title";
 
 export default async function Signin() {
   const session = await auth();
@@ -12,9 +13,19 @@ export default async function Signin() {
   }
 
   return (
-    <div className={styles.container}>
+    <Stack
+      spacing={2}
+      style={{
+        height: "100vh",
+        maxWidth: 400,
+        margin: "auto",
+        padding: 16,
+      }}
+      justifyContent="center"
+    >
+      <Title />
       <SigninForm />
       <GoogleSigninButton />
-    </div>
+    </Stack>
   );
 }
