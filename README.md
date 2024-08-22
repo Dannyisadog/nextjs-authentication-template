@@ -1,13 +1,13 @@
-# Nextjs app router & google signin example
+# Next.js Auth Template
 
-![test](/public/example.gif)
+![test](/public/example.png)
 
 ## Getting Started
 
-1. Create a `.env.local` file in the root of the project and add the following
+1. Create a `.env` file in the root of the project and add the following
 
-```bashf
-  cp .env.example .env.local
+```bash
+  cp .env.example .env
 ```
 
 2. Generate auth secret key
@@ -16,7 +16,7 @@
   npx auth secret
 ```
 
-3. Fill up your google client id & secret in `.env.local`
+3. Fill up your google client id & secret in `.env`
 
 ```bash
   ...
@@ -31,7 +31,13 @@
   yarn install
 ```
 
-5. Run the development server:
+5. Start postgres database
+
+```bash
+  docker-compose up -d
+```
+
+6. Run the development server:
 
 ```bash
   yarn dev
