@@ -1,7 +1,7 @@
-import { auth } from "@/auth";
+import { auth } from "auth";
 import styles from "../page.module.css";
-import GoogleSigninButton from "@/components/client/GoogleSigninButton";
-import { SigninForm } from "@/components/client/SigninForm";
+import GoogleSigninButton from "components/client/GoogleSigninButton";
+import { SigninForm } from "components/client/SigninForm";
 import { redirect } from "next/navigation";
 
 export default async function Signin() {

@@ -1,13 +1,12 @@
-import SignoutButton from "@/components/client/SignoutButton";
+import SignoutButton from "components/client/SignoutButton";
 import styles from "./page.module.css";
-import { auth } from "@/auth";
-import { User } from "@prisma/client";
+import { auth } from "auth";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
   const session = await auth();
-  const users: User[] = await fetch("http://localhost:3000/api/users").then(
-    (res) => res.json()
+  const users = await fetch("http://localhost:3000/api/users").then((res) =>
+    res.json()
   );
 
   if (!session) {
@@ -46,7 +45,7 @@ export default async function Home() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {users.map((user: any) => (
             <tr key={user.id}>
               <td>{user.email}</td>
               <td>{user.name}</td>
