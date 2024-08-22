@@ -3,6 +3,9 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Button from "./Button";
+import TextField from "./TextField";
+import { Stack, Typography } from "@mui/material";
 
 export function SigninForm() {
   const [email, setEmail] = useState("");
@@ -14,10 +17,6 @@ export function SigninForm() {
   return (
     <form
       method="post"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
       onSubmit={async (e) => {
         e.preventDefault();
         const result = await signIn("credentials", {
@@ -36,40 +35,39 @@ export function SigninForm() {
         }
       }}
     >
-      {error && (
-        <p
-          style={{
-            color: "#ff4545",
-            fontSize: 12,
+      <Stack spacing={2}>
+        {error && (
+          <p
+            style={{
+              color: "#ff4545",
+              fontSize: 12,
+            }}
+          >
+            email or password is incorrect
+          </p>
+        )}
+        <TextField
+          fullWidth
+          type="email"
+          name="email"
+          placeholder="email"
+          onChange={(e) => {
+            setEmail(e.target.value);
           }}
-        >
-          email or password is incorrect
-        </p>
-      )}
-      <input
-        type="email"
-        name="email"
-        placeholder="email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
-      <button
-        className="signin-button"
-        style={{
-          backgroundColor: "#191919",
-        }}
-      >
-        Sign in
-      </button>
+        />
+        <TextField
+          fullWidth
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <Button fullWidth type="submit" variant="contained">
+          <Typography>Sign in</Typography>
+        </Button>
+      </Stack>
     </form>
   );
 }
