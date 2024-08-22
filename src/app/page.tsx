@@ -4,10 +4,9 @@ import { auth } from "auth";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const session = await auth();
-  const users = await fetch("http://localhost:3000/api/users").then((res) =>
-    res.json()
-  );
+  const users = await fetch(`${apiUrl}/users`).then((res) => res.json());
 
   if (!session) {
     redirect("/signin");
