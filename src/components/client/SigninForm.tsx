@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Button from "./Button";
 import TextField from "./TextField";
-import { Stack, Typography } from "@mui/material";
+import { Alert, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 export function SigninForm() {
@@ -61,7 +61,7 @@ export function SigninForm() {
       }}
     >
       <Stack spacing={2}>
-        {error && <Typography color="#ff4545">{error}</Typography>}
+        {error && <Alert severity="error">{error}</Alert>}
         <TextField
           fullWidth
           type="email"

@@ -71,7 +71,7 @@ export default function RegisterForm() {
       }}
     >
       <Stack spacing={2}>
-        {error && <Typography color="#ff4545">{error}</Typography>}
+        {error && <Alert severity="error">{error}</Alert>}
         {success && (
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             <Stack direction="row" spacing={0.5}>
