@@ -2,14 +2,21 @@ import { PrismaClient, User } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const get = async (id: number): Promise<User> => {
-  if (!id) {
-    throw new Error("User ID is required");
+export const get = async ({
+  id,
+  email,
+}: {
+  id?: number;
+  email?: string;
+}): Promise<User> => {
+  if (!id && !email) {
+    throw new Error("User id or email is required");
   }
 
   const user = await prisma.user.findUnique({
     where: {
       id,
+      email,
     },
   });
 
