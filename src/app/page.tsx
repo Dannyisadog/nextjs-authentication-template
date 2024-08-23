@@ -2,6 +2,7 @@ import SignoutButton from "components/client/SignoutButton";
 import { auth } from "auth";
 import { redirect } from "next/navigation";
 import { Stack, Typography } from "@mui/material";
+import Title from "components/client/Title";
 
 export default async function Home() {
   const session = await auth();
@@ -12,14 +13,14 @@ export default async function Home() {
 
   return (
     <Stack
-      height="100vh"
       justifyContent="center"
       margin="auto"
       maxWidth={400}
       spacing={2}
       px={2}
+      pt={8}
     >
-      <Typography variant="h5">Basic Info</Typography>
+      <Title text="Basic Info" />
       <Stack direction="row" spacing={2}>
         <Typography textAlign="center">Account:</Typography>
         <Typography textAlign="center">{session.user?.email}</Typography>
