@@ -27,7 +27,7 @@ export default function RootLayout({
               maxWidth: 400,
               margin: "auto",
               px: 2,
-              pt: 8,
+              pt: "100px",
             }}
             justifyContent="center"
           >
