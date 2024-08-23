@@ -9,7 +9,6 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "Next.js auth template",
   description: "A template for Next.js with authentication",
-  viewport: "width=device-width, initial-scale=1, user-scalable=no",
 };
 
 export default function RootLayout({
@@ -19,6 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta charSet="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no"
+      />
       <meta property="og:title" content="Next.js Auth Template" />
       <meta property="og:image" content="/og-image.png" />
       <body>
