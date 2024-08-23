@@ -12,14 +12,7 @@ export default async function Home() {
   }
 
   return (
-    <Stack
-      justifyContent="center"
-      margin="auto"
-      maxWidth={400}
-      spacing={2}
-      px={2}
-      pt={8}
-    >
+    <>
       <Title text="Basic Info" />
       <Stack direction="row" spacing={2}>
         <Typography textAlign="center">Account:</Typography>
@@ -30,6 +23,6 @@ export default async function Home() {
         <Typography textAlign="center">{session.user?.name}</Typography>
       </Stack>
       <SignoutButton />
-    </Stack>
+    </>
   );
 }
