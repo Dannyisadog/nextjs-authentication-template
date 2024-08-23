@@ -23,6 +23,25 @@ export function SigninForm() {
       onSubmit={async (e) => {
         setLoading(true);
         e.preventDefault();
+
+        if (!email) {
+          setError("email is required");
+          setLoading(false);
+          return;
+        }
+
+        if (!email.includes("@")) {
+          setError("email is not valid");
+          setLoading(false);
+          return;
+        }
+
+        if (!password) {
+          setError("password is required");
+          setLoading(false);
+          return;
+        }
+
         const result = await signIn("credentials", {
           callbackUrl: "/",
           email,
@@ -31,7 +50,7 @@ export function SigninForm() {
         });
 
         if (result?.error) {
-          setError(result.error);
+          setError("email or password is incorrect");
         }
 
         if (!result?.error) {
@@ -42,9 +61,7 @@ export function SigninForm() {
       }}
     >
       <Stack spacing={2}>
-        {error && (
-          <Typography color="#ff4545">email or password incorrect</Typography>
-        )}
+        {error && <Typography color="#ff4545">{error}</Typography>}
         <TextField
           fullWidth
           type="email"
