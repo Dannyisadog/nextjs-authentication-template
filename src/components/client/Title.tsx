@@ -1,6 +1,7 @@
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 interface TitleProps {
   text: string;
@@ -12,11 +13,21 @@ export default function Title(props: TitleProps) {
   return (
     <Stack height={100} justifyContent="center">
       <Stack spacing={2}>
-        {hasGoBack && (
-          <Link href="/signin">
-            <ArrowBackIosNewIcon />
+        <Stack direction="row" justifyContent="space-between">
+          {hasGoBack ? (
+            <Link href="/signin">
+              <ArrowBackIosNewIcon />
+            </Link>
+          ) : (
+            <Box />
+          )}
+          <Link
+            href="https://github.com/Dannyisadog/nextjs-authjs-template"
+            target="_blank"
+          >
+            <GitHubIcon />
           </Link>
-        )}
+        </Stack>
         <Typography variant="h4">{text}</Typography>
       </Stack>
     </Stack>
