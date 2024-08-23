@@ -37,14 +37,7 @@ export function SigninForm() {
     >
       <Stack spacing={2}>
         {error && (
-          <p
-            style={{
-              color: "#ff4545",
-              fontSize: 12,
-            }}
-          >
-            email or password is incorrect
-          </p>
+          <Typography color="#ff4545">email or password incorrect</Typography>
         )}
         <TextField
           fullWidth
