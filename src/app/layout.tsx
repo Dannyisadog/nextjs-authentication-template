@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "theme";
 import { Stack } from "@mui/material";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Next.js auth template",
@@ -34,6 +35,7 @@ export default function RootLayout({
           >
             {children}
             <SpeedInsights />
+            <Analytics />
           </Stack>
         </ThemeProvider>
       </body>
