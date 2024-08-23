@@ -4,9 +4,7 @@ import { redirect } from "next/navigation";
 import { Stack, Typography } from "@mui/material";
 
 export default async function Home() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const session = await auth();
-  const users = await fetch(`${apiUrl}/users`).then((res) => res.json());
 
   if (!session) {
     redirect("/signin");
