@@ -1,6 +1,9 @@
 import { PrismaClient, User } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
+
+const saltRounds = 10;
 
 export const get = async ({
   id,
@@ -33,10 +36,27 @@ export const list = async (): Promise<User[]> => {
 export const create = async ({
   name,
   email,
+  password,
+  passwordConfirm,
 }: {
   name: string;
   email: string;
-}): Promise<User> => {
+  password?: string;
+  passwordConfirm?: string;
+}) => {
+  let userExists = false;
+
+  try {
+    await get({ email });
+    userExists = true;
+  } catch (e) {
+    userExists = false;
+  }
+
+  if (userExists) {
+    throw new Error("User already exists");
+  }
+
   if (!name) {
     throw new Error("User name is required");
   }
@@ -45,14 +65,32 @@ export const create = async ({
     throw new Error("User email is required");
   }
 
-  const user = await prisma.user.create({
-    data: {
-      name,
-      email,
-    },
-  });
+  if (password && password !== passwordConfirm) {
+    throw new Error("Passwords do not match");
+  }
 
-  return user;
+  if (password) {
+    bcrypt.hash(password, saltRounds, async function (err, hash) {
+      if (err) {
+        throw new Error("Error hashing password");
+      }
+
+      await prisma.user.create({
+        data: {
+          name,
+          email,
+          password: hash,
+        },
+      });
+    });
+  } else {
+    await prisma.user.create({
+      data: {
+        name,
+        email,
+      },
+    });
+  }
 };
 
 export const remove = async (id: number) => {
