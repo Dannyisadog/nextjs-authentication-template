@@ -16,6 +16,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta property="og:title" content="Next.js Auth Template" />
+      <meta property="og:image" content="/og-image.png" />
       <body>
         <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </body>
