@@ -1,6 +1,6 @@
 # Next.js Auth Template
 
-![test](/public/example.png)
+<img src="/public/example1.png" alt="signin page" width="250"/> <img src="/public/example2.png" alt="register page" width="250"/> <img src="/public/example3.png" alt="info page" width="250"/>
 
 ## Getting Started
 

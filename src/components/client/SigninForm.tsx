@@ -6,6 +6,7 @@ import { useState } from "react";
 import Button from "./Button";
 import TextField from "./TextField";
 import { Stack, Typography } from "@mui/material";
+import Link from "next/link";
 
 export function SigninForm() {
   const [email, setEmail] = useState("");
@@ -62,6 +63,11 @@ export function SigninForm() {
             setPassword(e.target.value);
           }}
         />
+        <Stack direction="row" justifyContent="end">
+          <Link href="/register">
+            <Typography color="primary.dark">register</Typography>
+          </Link>
+        </Stack>
         <Button isLoading={loading} fullWidth type="submit" variant="contained">
           <Typography>Sign in</Typography>
         </Button>

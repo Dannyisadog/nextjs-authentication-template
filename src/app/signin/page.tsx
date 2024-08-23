@@ -13,19 +13,10 @@ export default async function Signin() {
   }
 
   return (
-    <Stack
-      spacing={2}
-      sx={{
-        maxWidth: 400,
-        margin: "auto",
-        px: 2,
-        pt: 8,
-      }}
-      justifyContent="center"
-    >
+    <>
       <Title text="Next.js Auth Template" />
       <SigninForm />
       <GoogleSigninButton />
-    </Stack>
+    </>
   );
 }
