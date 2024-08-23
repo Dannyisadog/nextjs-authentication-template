@@ -33,7 +33,7 @@ export default function RootLayout({
               maxWidth: 400,
               margin: "auto",
               px: 2,
-              pt: "100px",
+              py: 4,
             }}
             justifyContent="center"
           >
