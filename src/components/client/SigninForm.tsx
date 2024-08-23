@@ -14,10 +14,13 @@ export function SigninForm() {
 
   const router = useRouter();
 
+  const [loading, setLoading] = useState(false);
+
   return (
     <form
       method="post"
       onSubmit={async (e) => {
+        setLoading(true);
         e.preventDefault();
         const result = await signIn("credentials", {
           callbackUrl: "/",
@@ -33,6 +36,8 @@ export function SigninForm() {
         if (!result?.error) {
           router.push("/");
         }
+
+        setLoading(false);
       }}
     >
       <Stack spacing={2}>
@@ -57,7 +62,7 @@ export function SigninForm() {
             setPassword(e.target.value);
           }}
         />
-        <Button fullWidth type="submit" variant="contained">
+        <Button isLoading={loading} fullWidth type="submit" variant="contained">
           <Typography>Sign in</Typography>
         </Button>
       </Stack>
