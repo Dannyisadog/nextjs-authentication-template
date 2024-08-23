@@ -15,15 +15,15 @@ export default async function Signin() {
   return (
     <Stack
       spacing={2}
-      style={{
-        height: "100vh",
+      sx={{
         maxWidth: 400,
         margin: "auto",
-        padding: 16,
+        px: 2,
+        pt: 8,
       }}
       justifyContent="center"
     >
-      <Title />
+      <Title text="Next.js Auth Template" />
       <SigninForm />
       <GoogleSigninButton />
     </Stack>
