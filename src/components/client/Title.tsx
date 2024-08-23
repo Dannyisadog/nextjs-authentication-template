@@ -11,7 +11,7 @@ interface TitleProps {
 export default function Title(props: TitleProps) {
   const { text, hasGoBack } = props;
   return (
-    <Stack height={100} justifyContent="center">
+    <Stack height={130} justifyContent="center">
       <Stack spacing={2}>
         <Stack direction="row" justifyContent="space-between">
           {hasGoBack ? (
