@@ -1,30 +1,18 @@
-import { PrismaClient } from '@prisma/client';
-import { NextRequest, NextResponse } from 'next/server';
-import bcrypt from "bcryptjs";
-
-const prisma = new PrismaClient();
-const saltRounds = 10;
+import { NextRequest, NextResponse } from "next/server";
+import { create, list } from "app/repository/user";
 
 export async function GET() {
-  const users = await prisma.user.findMany();
+  const users = await list();
   return NextResponse.json(users);
 }
 
 export async function POST(req: NextRequest) {
-  const { name, email, password} = await req.json();
+  const { name, email } = await req.json();
 
-  bcrypt.genSalt(saltRounds, function(err, salt) {
-    bcrypt.hash(password, salt, async function(err, hash) {
-      console.log({hash});
-      await prisma.user.create({
-        data: {
-          name,
-          email,
-          password: hash,
-        },
-    });
+  await create({
+    name,
+    email,
   });
-});
 
-  return NextResponse.json({ message: 'Create user', });
+  return NextResponse.json({ message: "Create user" });
 }
