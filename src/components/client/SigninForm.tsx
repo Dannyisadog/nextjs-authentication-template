@@ -82,7 +82,7 @@ export function SigninForm() {
         />
         <Stack direction="row" justifyContent="end">
           <Link href="/register">
-            <Typography color="primary.dark">register</Typography>
+            <Typography color="primary">register</Typography>
           </Link>
         </Stack>
         <Button isLoading={loading} fullWidth type="submit" variant="contained">
