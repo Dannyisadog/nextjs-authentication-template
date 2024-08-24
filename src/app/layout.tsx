@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "Next.js auth template",
+  title: "Next.js Auth Template",
   description: "A template for Next.js with authentication",
 };
 
@@ -24,6 +24,10 @@ export default function RootLayout({
         content="width=device-width, initial-scale=1, user-scalable=no"
       />
       <meta property="og:title" content="Next.js Auth Template" />
+      <meta
+        property="og:description"
+        content="A template for Next.js with authentication"
+      />
       <meta property="og:image" content="/og-image.png" />
       <body>
         <ThemeProvider theme={theme}>
