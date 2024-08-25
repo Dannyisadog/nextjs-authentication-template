@@ -20,6 +20,7 @@ export const get = async ({
     where: {
       id,
       email,
+      is_deleted: false,
     },
   });
 
