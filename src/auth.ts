@@ -3,6 +3,7 @@ import NextAuth, { User } from "next-auth"
 import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import bcrypt from 'bcryptjs' 
+import { create as createUser, get as getUser } from "app/repository/user"
 
 const prisma = new PrismaClient();
 
@@ -41,21 +42,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return false
       }
 
-      const userExists = await prisma.user.findFirst({
-        where: {
-          email: user.email as string,
-        }
-      });
+      let userExists = null;
+
+      try {
+        userExists = await getUser({email: user.email as string});
+      } catch (e) {
+        console.error(e);
+      }
 
       if (userExists) {
         return true;
       }
 
-      await prisma.user.create({
-        data: {
-          email: user.email as string,
-          name: user.name as string,
-        }
+      await createUser({
+        email: user.email as string,
+        name: user.name as string,
       });
 
       return true;
