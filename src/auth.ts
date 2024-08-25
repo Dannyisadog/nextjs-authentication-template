@@ -1,11 +1,8 @@
-import { PrismaClient } from "@prisma/client"
 import NextAuth, { User } from "next-auth"
 import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import bcrypt from 'bcryptjs' 
 import { create as createUser, get as getUser } from "app/repository/user"
-
-const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
@@ -15,11 +12,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Google,
     Credentials({
       async authorize({ email, password, csrfToken }) {
-        const user = await prisma.user.findFirst({
-          where: {
-            email: email as string,
-            is_deleted: false,
-          }
+        const user = await getUser({
+          email: email as string,
         });
 
         if (!user || !user.password) {
