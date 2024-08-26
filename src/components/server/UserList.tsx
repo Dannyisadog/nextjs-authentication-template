@@ -22,9 +22,12 @@ export default async function UserList() {
         return (
           <ListItem key={user.id}>
             <ListItemAvatar>
-              <Avatar>
-                <PersonIcon />
-              </Avatar>
+              {!user.image && (
+                <Avatar>
+                  <PersonIcon />
+                </Avatar>
+              )}
+              {user.image && <Avatar src={user.image} />}
             </ListItemAvatar>
             <ListItemText primary={user.name} secondary={user.email} />
           </ListItem>
