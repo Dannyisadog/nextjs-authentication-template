@@ -53,6 +53,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       await createUser({
         email: user.email as string,
         name: user.name as string,
+        image: user.image as string,
       });
 
       return true;
