@@ -39,11 +39,13 @@ export const create = async ({
   email,
   password,
   passwordConfirm,
+  image,
 }: {
   name: string;
   email: string;
   password?: string;
   passwordConfirm?: string;
+  image?: string;
 }) => {
   let userExists = false;
 
@@ -81,6 +83,7 @@ export const create = async ({
           name,
           email,
           password: hash,
+          image,
         },
       });
     });
@@ -89,6 +92,7 @@ export const create = async ({
       data: {
         name,
         email,
+        image,
       },
     });
   }
