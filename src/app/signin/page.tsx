@@ -4,6 +4,7 @@ import { SigninForm } from "components/client/SigninForm";
 import { redirect } from "next/navigation";
 import { Stack } from "@mui/material";
 import Title from "components/client/Title";
+import GithubSigninButton from "components/client/GithubSigninButton";
 
 export default async function Signin() {
   const session = await auth();
@@ -17,6 +18,7 @@ export default async function Signin() {
       <Title text="Next.js Auth Template" />
       <SigninForm />
       <GoogleSigninButton />
+      <GithubSigninButton />
     </>
   );
 }

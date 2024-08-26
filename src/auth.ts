@@ -1,5 +1,6 @@
 import NextAuth, { User } from "next-auth"
 import Google from "next-auth/providers/google"
+import GitHub from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials"
 import bcrypt from 'bcryptjs' 
 import { create as createUser, get as getUser } from "app/repository/user"
@@ -10,6 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   providers: [
     Google,
+    GitHub,
     Credentials({
       async authorize({ email, password, csrfToken }) {
         const user = await getUser({
