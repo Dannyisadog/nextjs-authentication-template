@@ -1,6 +1,7 @@
+"use client";
+
 import {
   Avatar,
-  Box,
   List,
   ListItem,
   ListItemAvatar,
@@ -8,13 +9,22 @@ import {
 } from "@mui/material";
 import { User } from "@prisma/client";
 import PersonIcon from "@mui/icons-material/Person";
+import { useEffect, useState } from "react";
 
-export default async function UserList() {
+export default function UserList() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  const response = await fetch(`${apiUrl}/users`);
+  const [users, setUsers] = useState<User[]>([]);
 
-  const users: User[] = await response.json();
+  const getUsers = async () => {
+    const response = await fetch(`${apiUrl}/users`);
+    const data = await response.json();
+    setUsers(data);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <List>

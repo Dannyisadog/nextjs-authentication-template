@@ -3,7 +3,7 @@ import { auth } from "auth";
 import { redirect } from "next/navigation";
 import { Stack, Typography } from "@mui/material";
 import Title from "components/client/Title";
-import UserList from "components/server/UserList";
+import UserList from "components/client/UserList";
 
 export default async function Home() {
   const session = await auth();
