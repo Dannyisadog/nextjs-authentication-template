@@ -22,12 +22,15 @@ The nextjs-authjs-template is a robust starter template for building modern web 
   npx auth secret
 ```
 
-3. Fill up your google client id & secret in `.env`
+3. Fill up your google & github client id & secret in `.env`
 
 ```bash
   ...
   AUTH_GOOGLE_ID=xxxx
   AUTH_GOOGLE_SECRET=xxxx
+  
+  AUTH_GITHUB_ID=xxxx
+  AUTH_GITHUB_SECRET=xxxx
   ...
 ```
 
