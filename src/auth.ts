@@ -4,6 +4,7 @@ import GitHub from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials"
 import bcrypt from 'bcryptjs' 
 import { create as createUser, get as getUser } from "app/repository/user"
+import { sendEmail } from "app/service/email"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
@@ -55,6 +56,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         name: user.name as string,
         image: user.image as string,
       });
+
+      sendEmail(user.name as string, user.email as string);
 
       return true;
     },
