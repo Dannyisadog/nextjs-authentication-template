@@ -1,14 +1,3 @@
-import {
-  Body,
-  Button,
-  Container,
-  Head,
-  Html,
-  Img,
-  Section,
-  Text,
-} from "@react-email/components";
-
 interface SigninWelcomeEmailProps {
   firstName: string;
 }
@@ -16,39 +5,38 @@ interface SigninWelcomeEmailProps {
 export const SigninWelcomeEmail = (props: SigninWelcomeEmailProps) => {
   const { firstName } = props;
   return (
-    <Html>
-      <Head />
-      <Body style={main}>
-        <Container style={container}>
-          <Img
+    <html>
+      <body style={main}>
+        <div style={container}>
+          <img
             src={`https://nextauth.dannyisadog.com/logo.png`}
             width="50"
             height="50"
             alt="nextjs-authjs-template"
             style={logo}
           />
-          <Text style={paragraph}>Hi {firstName},</Text>
-          <Text style={paragraph}>
+          <p style={paragraph}>Hi {firstName},</p>
+          <p style={paragraph}>
             Welcome to the Next.js Auth.js Template!
             <br />
             We{"'"}re thrilled to have you with us!
-          </Text>
-          <Section style={btnContainer}>
-            <Button
+          </p>
+          <section style={btnContainer}>
+            <a
               style={button}
               href="https://github.com/Dannyisadog/nextjs-authjs-template"
             >
               Get started
-            </Button>
-          </Section>
-          <Text style={paragraph}>
+            </a>
+          </section>
+          <p style={paragraph}>
             Best,
             <br />
             Nextjs Authjs Template Team
-          </Text>
-        </Container>
-      </Body>
-    </Html>
+          </p>
+        </div>
+      </body>
+    </html>
   );
 };
 
@@ -65,6 +53,7 @@ const main = {
 };
 
 const container = {
+  maxWidth: "37.5em",
   margin: "0 auto",
   padding: "20px 0 48px",
 };
@@ -91,14 +80,4 @@ const button = {
   textAlign: "center" as const,
   display: "block",
   padding: "12px",
-};
-
-const hr = {
-  borderColor: "#cccccc",
-  margin: "20px 0",
-};
-
-const footer = {
-  color: "#8898aa",
-  fontSize: "12px",
 };
