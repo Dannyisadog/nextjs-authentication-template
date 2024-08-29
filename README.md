@@ -34,19 +34,27 @@ The nextjs-authjs-template is a robust starter template for building modern web 
   ...
 ```
 
-4. Install dependencies
+4. Create your [Resend api key](https://resend.com/api-keys) for email service in `.env`
+   
+```bash
+  ...
+  RESEND_API_KEY=xxxx
+  ...
+```
+
+5. Install dependencies
 
 ```bash
   yarn install
 ```
 
-5. Start postgres database
+6. Start postgres database
 
 ```bash
   docker-compose up -d
 ```
 
-6. Run the development server:
+7. Run the development server:
 
 ```bash
   yarn dev
