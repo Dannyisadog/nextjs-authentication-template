@@ -2,6 +2,15 @@
 
 The nextjs-authjs-template is a robust starter template for building modern web applications with Next.js and Auth.js (formerly NextAuth.js). This template is designed to streamline the development process by providing a pre-configured setup that integrates user authentication and authorization seamlessly into your Next.js project.
 
+## Features:
+- FullStack [Next.js](https://nextjs.org/) application with built-in authentication.
+- User authentication with email, Google, and GitHub.
+- ORM with [Prisma](https://www.prisma.io/) for database management.
+- PostgreSQL database with Docker for easy setup.
+- Email service with [Resend](https://resend.com/) API.
+- [MUI](https://mui.com/) for styling and responsive design.
+
+
 ## Use Cases:
 - Rapidly prototype and deploy Next.js applications with built-in authentication.
 - Start new projects with a solid foundation, reducing the boilerplate code required for user management.
@@ -34,19 +43,27 @@ The nextjs-authjs-template is a robust starter template for building modern web 
   ...
 ```
 
-4. Install dependencies
+4. Create your [Resend api key](https://resend.com/api-keys) for email service in `.env`
+   
+```bash
+  ...
+  RESEND_API_KEY=xxxx
+  ...
+```
+
+5. Install dependencies
 
 ```bash
   yarn install
 ```
 
-5. Start postgres database
+6. Start postgres database
 
 ```bash
   docker-compose up -d
 ```
 
-6. Run the development server:
+7. Run the development server:
 
 ```bash
   yarn dev
