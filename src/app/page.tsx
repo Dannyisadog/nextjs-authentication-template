@@ -42,9 +42,9 @@ export default async function Home() {
         <Typography textAlign="center">Name:</Typography>
         <Typography textAlign="center">{session.user?.name}</Typography>
       </Stack>
+      <SignoutButton />
       <Title text="Users" showGithub={false} />
       <UserList />
-      <SignoutButton />
     </>
   );
 }
