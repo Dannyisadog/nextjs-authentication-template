@@ -1,20 +1,30 @@
-import NextAuth, { User } from "next-auth";
+import NextAuth, { NextAuthConfig, User } from "next-auth";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { create as createUser, get as getUser } from "app/repository/user";
+import { create as createUser, get, get as getUser } from "app/repository/user";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { sendEmail } from "app/service/email";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  adapter: PrismaAdapter(prisma),
+  session: { strategy: "jwt" },
   pages: {
     signIn: "/signin",
   },
   providers: [
-    Google,
-    GitHub,
+    Google({
+      allowDangerousEmailAccountLinking: true,
+    }),
+    GitHub({
+      allowDangerousEmailAccountLinking: true,
+    }),
     Credentials({
-      async authorize({ email, password, csrfToken }) {
+      async authorize({ email, password }) {
         const user = await getUser({
           email: email as string,
         });
@@ -34,6 +44,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
+    async session({ session }) {
+      const dbUser = await prisma.user.findUnique({
+        where: {
+          email: session.user.email as string,
+          is_deleted: false,
+        },
+      });
+
+      session.user.image = dbUser?.image;
+
+      return session;
+    },
     async signIn({ user }) {
       if (!user) {
         return false;
@@ -62,4 +84,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return true;
     },
   },
-});
+} satisfies NextAuthConfig);

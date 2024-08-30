@@ -12,26 +12,15 @@ import { User } from "@prisma/client";
 import PersonIcon from "@mui/icons-material/Person";
 import { useEffect, useState } from "react";
 import multiavatar from "@multiavatar/multiavatar/esm";
+import { useProvider } from "providers/Provider";
 
 export default function UserList() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const [users, setUsers] = useState<User[]>([]);
-
-  const getUsers = async () => {
-    const response = await fetch(`${apiUrl}/users`);
-    const data = await response.json();
-    setUsers(data);
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
+  const { users } = useProvider();
 
   return (
     <List>
       {users.map((user) => {
-        const svgCode = multiavatar(user.email);
+        const svgCode = multiavatar(user.email as string);
         return (
           <ListItem key={user.id}>
             <ListItemAvatar>

@@ -5,13 +5,20 @@ import multiavatar from "@multiavatar/multiavatar/esm";
 import { User } from "next-auth";
 import Image from "next/image";
 import EditIcon from "@mui/icons-material/Edit";
+import { useDisclosure } from "hooks/useDisclosure";
+import { UploadAvatarDialog } from "./UploadAvatarDialog";
+import { useProvider } from "providers/Provider";
 
-interface UserAvatarProps {
-  user: User;
-}
+const UserAvatar = () => {
+  const { session } = useProvider();
 
-const UserAvatar = (props: UserAvatarProps) => {
-  const { user } = props;
+  const { user } = session;
+
+  const { isOpen, onClose, onOpen } = useDisclosure();
+
+  if (!user) {
+    return null;
+  }
 
   const svgCode = multiavatar(user.email as string);
 
@@ -31,10 +38,13 @@ const UserAvatar = (props: UserAvatarProps) => {
             width={64}
             height={64}
             alt={`Avatar for ${user.name}`}
+            style={{
+              objectFit: "cover",
+            }}
           />
         </Box>
       )}
-      {/* <Box
+      <Box
         sx={{
           width: 24,
           height: 24,
@@ -48,6 +58,7 @@ const UserAvatar = (props: UserAvatarProps) => {
           justifyContent: "center",
           alignItems: "center",
         }}
+        onClick={onOpen}
       >
         <EditIcon
           sx={{
@@ -55,7 +66,8 @@ const UserAvatar = (props: UserAvatarProps) => {
             color: "white",
           }}
         />
-      </Box> */}
+      </Box>
+      <UploadAvatarDialog open={isOpen} onClose={onClose} />
     </Box>
   );
 };
