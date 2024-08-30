@@ -122,3 +122,40 @@ export const remove = async (id: number) => {
     },
   });
 };
+
+export const update = async ({
+  id,
+  name,
+  email,
+  image,
+}: {
+  id: number;
+  name?: string;
+  email?: string;
+  image?: string;
+}) => {
+  if (!id) {
+    throw new Error("User ID is required");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id,
+    },
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      name,
+      email,
+      image,
+    },
+  });
+};
