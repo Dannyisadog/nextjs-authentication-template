@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/Dannyisadog/nextjs-authjs-template/compare/v0.2.0...v0.3.0) (2024-08-30)
+
+
+### Features
+
+* **api:** add update user avatar api ([a2a1113](https://github.com/Dannyisadog/nextjs-authjs-template/commit/a2a1113c2aeb303b56f0ca5d98c2d62f62dd6e82))
+* **auth:** add prisma adapter ([705adc9](https://github.com/Dannyisadog/nextjs-authjs-template/commit/705adc9e05bd569c92b9e0c67f194334f510f2ef))
+* **component:** add upload avatar dialog ([872ab3e](https://github.com/Dannyisadog/nextjs-authjs-template/commit/872ab3ea9effb8c5d551635f64a582b6810d2864))
+* **component:** add upload user avatar dialog in user avatar ([da79164](https://github.com/Dannyisadog/nextjs-authjs-template/commit/da79164237dfb95a6196b24514f58681ec51de47))
+* **component:** get users from provider ([76e9361](https://github.com/Dannyisadog/nextjs-authjs-template/commit/76e93618e8644f571fb40811a39e04a62b6db8e2))
+* **hook:** add useDisclosure hook ([3d373e9](https://github.com/Dannyisadog/nextjs-authjs-template/commit/3d373e9d4e155656f6f96a794c80715945298933))
+* **middleware:** remove middleware for auth.js bug ([276c1f1](https://github.com/Dannyisadog/nextjs-authjs-template/commit/276c1f15c016dca7dd5badb871d49aca00b211bd))
+* **package:** add prisma adapter package ([dcb91ab](https://github.com/Dannyisadog/nextjs-authjs-template/commit/dcb91abadd4fd6e41dd00c2a5de1ac3e41356e3a))
+* **package:** update prisma & add vercel/blob package ([0f06435](https://github.com/Dannyisadog/nextjs-authjs-template/commit/0f064359acfa035d890586426c60a4f131a3b4e3))
+* **prisma:** add & update schemas and migrations ([abeda08](https://github.com/Dannyisadog/nextjs-authjs-template/commit/abeda081232e6cd332d41f00e5c7ef918e09a1de))
+* **provider:** add global provider ([68da421](https://github.com/Dannyisadog/nextjs-authjs-template/commit/68da4210c995e5976788a6f829bb52c74c6250fd))
+* **repository:** add update function in user repository ([0f538f1](https://github.com/Dannyisadog/nextjs-authjs-template/commit/0f538f1ca1da12b8d694256e391d791dcc86d349))
+
 ## 0.1.0 (2024-08-28)
 
 
