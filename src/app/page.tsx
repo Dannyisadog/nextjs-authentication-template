@@ -1,11 +1,12 @@
 import SignoutButton from "components/client/SignoutButton";
 import { auth } from "auth";
 import { redirect } from "next/navigation";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Title from "components/client/Title";
 import UserList from "components/client/UserList";
-import Image from "next/image";
 import UserAvatar from "components/client/UserAvatar";
+import { put } from "@vercel/blob";
+import Provider from "providers/Provider";
 
 export default async function Home() {
   const session = await auth();
@@ -15,9 +16,9 @@ export default async function Home() {
   }
 
   return (
-    <>
+    <Provider session={session}>
       <Title text="Basic Info" />
-      <UserAvatar user={session.user} />
+      <UserAvatar />
       <Stack direction="row" spacing={2}>
         <Typography textAlign="center">Account:</Typography>
         <Typography textAlign="center">{session.user?.email}</Typography>
@@ -29,6 +30,6 @@ export default async function Home() {
       <SignoutButton />
       <Title text="Users" showGithub={false} />
       <UserList />
-    </>
+    </Provider>
   );
 }
