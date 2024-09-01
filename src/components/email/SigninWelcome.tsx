@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 interface SigninWelcomeEmailProps {
   firstName: string;
 }
