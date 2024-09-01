@@ -1,4 +1,5 @@
 import { create } from "app/repository/user";
+import { sendWelcomeEmail } from "app/service/email/welcome";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -10,6 +11,8 @@ export async function POST(req: NextRequest) {
     password,
     passwordConfirm,
   });
+
+  sendWelcomeEmail(name, email);
 
   return NextResponse.json({ message: "Create user" });
 }
