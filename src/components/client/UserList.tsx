@@ -8,9 +8,6 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
-import { User } from "@prisma/client";
-import PersonIcon from "@mui/icons-material/Person";
-import { useEffect, useState } from "react";
 import multiavatar from "@multiavatar/multiavatar/esm";
 import { useProvider } from "providers/Provider";
 
