@@ -3,7 +3,7 @@ import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { create as createUser, get, get as getUser } from "app/repository/user";
+import { create as createUser, get as getUser } from "app/repository/user";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { sendEmail } from "app/service/email";
 import { PrismaClient } from "@prisma/client";
@@ -45,12 +45,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-      const dbUser = await prisma.user.findUnique({
-        where: {
-          email: session.user.email as string,
-          is_deleted: false,
-        },
-      });
+      const dbUser = await getUser({ email: session.user.email as string });
 
       session.user.image = dbUser?.image;
 
