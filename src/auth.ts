@@ -1,15 +1,23 @@
-import NextAuth, { NextAuthConfig, User } from "next-auth";
+import NextAuth, {
+  NextAuthConfig,
+  Session,
+  User as NextAuthUser,
+} from "next-auth";
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { create as createUser, get as getUser } from "app/repository/user";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { sendEmail } from "app/service/email";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, User as PrismaUser } from "@prisma/client";
 import { sendWelcomeEmail } from "app/service/email/welcome";
+import { sendVerificationEmail } from "app/service/email/verify";
 
 const prisma = new PrismaClient();
+
+export type CustomSession = {
+  authUser: PrismaUser;
+} & Session;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -37,7 +45,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const match = await bcrypt.compare(password as string, user.password);
 
         if (match) {
-          return user as unknown as User;
+          return user as unknown as NextAuthUser;
         }
 
         return null;
@@ -48,7 +56,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session }) {
       const dbUser = await getUser({ email: session.user.email as string });
 
-      session.user.image = dbUser?.image;
+      const newSession = session as unknown as CustomSession;
+      newSession.authUser = dbUser;
 
       return session;
     },
@@ -76,6 +85,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       });
 
       sendWelcomeEmail(user.name as string, user.email as string);
+      sendVerificationEmail(user.name as string, user.email as string);
 
       return true;
     },

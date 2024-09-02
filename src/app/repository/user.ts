@@ -128,11 +128,13 @@ export const update = async ({
   name,
   email,
   image,
+  emailVerified,
 }: {
   id: number;
   name?: string;
   email?: string;
   image?: string;
+  emailVerified?: Date;
 }) => {
   if (!id) {
     throw new Error("User ID is required");
@@ -156,6 +158,7 @@ export const update = async ({
       name,
       email,
       image,
+      emailVerified,
     },
   });
 };
