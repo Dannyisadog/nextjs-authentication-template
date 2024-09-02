@@ -8,6 +8,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { sendEmail } from "app/service/email";
 import { PrismaClient } from "@prisma/client";
 import { sendWelcomeEmail } from "app/service/email/welcome";
+import { sendVerificationEmail } from "app/service/email/verify";
 
 const prisma = new PrismaClient();
 
@@ -76,6 +77,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       });
 
       sendWelcomeEmail(user.name as string, user.email as string);
+      sendVerificationEmail(user.name as string, user.email as string);
 
       return true;
     },
