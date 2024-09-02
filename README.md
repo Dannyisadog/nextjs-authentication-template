@@ -1,6 +1,6 @@
 # [Next.js Auth Template](https://nextauth.dannyisadog.com)
 
-![Github Intro Image](/public/github-intro.png)
+![Github Intro Image](https://nextauth.dannyisadog.com/github-intro.png)
 
 The nextjs-authjs-template is a robust starter template for building modern web applications with Next.js and Auth.js (formerly NextAuth.js). This template is designed to streamline the development process by providing a pre-configured setup that integrates user authentication and authorization seamlessly into your Next.js project.
 

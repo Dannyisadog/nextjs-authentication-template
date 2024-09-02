@@ -1,7 +1,7 @@
 {
-  "name": "nextjs-google-authjs-example",
+  "name": "nextjs-auth-template",
   "version": "0.4.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
