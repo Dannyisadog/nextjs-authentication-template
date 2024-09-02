@@ -3,7 +3,13 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect } from "react";
 
-export default function Verify() {
+interface VerifyProps {
+  setError: (error: string) => void;
+}
+
+export default function Verify(props: VerifyProps) {
+  const { setError } = props;
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -21,6 +27,9 @@ export default function Verify() {
 
     if (response.ok) {
       router.push("/signin");
+    } else {
+      const data = await response.json();
+      setError(data.message);
     }
   }, [router, token]);
 

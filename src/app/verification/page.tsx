@@ -1,9 +1,12 @@
-import { CircularProgress, Stack } from "@mui/material";
+"use client";
+
+import { Alert, CircularProgress, Stack } from "@mui/material";
 import Title from "components/client/Title";
 import Verify from "./Verify";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 
 export default function VerificationPage() {
+  const [error, setError] = useState("");
   return (
     <>
       <Title text="Verifying..." />
@@ -14,10 +17,11 @@ export default function VerificationPage() {
           pt: 4,
         }}
       >
-        <CircularProgress />
+        {!error && <CircularProgress />}
+        {error && <Alert severity="error">{error}</Alert>}
       </Stack>
       <Suspense fallback={<></>}>
-        <Verify />
+        <Verify setError={setError} />
       </Suspense>
     </>
   );

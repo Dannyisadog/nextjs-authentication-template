@@ -17,15 +17,6 @@ export const verifyEmailToken = async (token: string) => {
 
   const user = await get({ email });
 
-  if (!user) {
-    return NextResponse.json(
-      { message: "User not found" },
-      {
-        status: 404,
-      }
-    );
-  }
-
   await update({
     id: user.id,
     emailVerified: new Date(),
