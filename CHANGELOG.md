@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/Dannyisadog/nextjs-authjs-template/compare/v0.2.0...v0.4.0) (2024-09-02)
+
+
+### Features
+
+* **api:** add update user avatar api ([a2a1113](https://github.com/Dannyisadog/nextjs-authjs-template/commit/a2a1113c2aeb303b56f0ca5d98c2d62f62dd6e82))
+* **api:** add verify email ([5573a84](https://github.com/Dannyisadog/nextjs-authjs-template/commit/5573a84962420e46aaa1f4af22b3607a9d1c3bac))
+* **api:** send welcome email when register successfully ([ae76da1](https://github.com/Dannyisadog/nextjs-authjs-template/commit/ae76da120549b4efe7a713e032706f6a31242e1f))
+* **app:** adjust layout metadata ([e852828](https://github.com/Dannyisadog/nextjs-authjs-template/commit/e8528287fc19be28434d0b2e2cd932ab041206f6))
+* **auth:** add prisma adapter ([705adc9](https://github.com/Dannyisadog/nextjs-authjs-template/commit/705adc9e05bd569c92b9e0c67f194334f510f2ef))
+* **auth:** adjust session type ([ae20616](https://github.com/Dannyisadog/nextjs-authjs-template/commit/ae20616a86d37f3f16cf23f7c7ff430a508e9776))
+* **component:** add upload avatar dialog ([872ab3e](https://github.com/Dannyisadog/nextjs-authjs-template/commit/872ab3ea9effb8c5d551635f64a582b6810d2864))
+* **component:** add upload user avatar dialog in user avatar ([da79164](https://github.com/Dannyisadog/nextjs-authjs-template/commit/da79164237dfb95a6196b24514f58681ec51de47))
+* **component:** get users from provider ([76e9361](https://github.com/Dannyisadog/nextjs-authjs-template/commit/76e93618e8644f571fb40811a39e04a62b6db8e2))
+* **email:** add email verification template ([e9aa759](https://github.com/Dannyisadog/nextjs-authjs-template/commit/e9aa759c6f4e2e13ce86b807d9c58e58d4bd75b7))
+* **email:** send email verification when register & first login ([b5201c5](https://github.com/Dannyisadog/nextjs-authjs-template/commit/b5201c5675a188aa1e2c81f0cbb9955da5f23790))
+* **hook:** add useDisclosure hook ([3d373e9](https://github.com/Dannyisadog/nextjs-authjs-template/commit/3d373e9d4e155656f6f96a794c80715945298933))
+* **middleware:** remove middleware for auth.js bug ([276c1f1](https://github.com/Dannyisadog/nextjs-authjs-template/commit/276c1f15c016dca7dd5badb871d49aca00b211bd))
+* **package:** add jwt package ([e2f4631](https://github.com/Dannyisadog/nextjs-authjs-template/commit/e2f4631b8a47ef9632131d6ccc93ae04f316538c))
+* **package:** add prisma adapter package ([dcb91ab](https://github.com/Dannyisadog/nextjs-authjs-template/commit/dcb91abadd4fd6e41dd00c2a5de1ac3e41356e3a))
+* **package:** update prisma & add vercel/blob package ([0f06435](https://github.com/Dannyisadog/nextjs-authjs-template/commit/0f064359acfa035d890586426c60a4f131a3b4e3))
+* **page:** add verification page ([9d44dc7](https://github.com/Dannyisadog/nextjs-authjs-template/commit/9d44dc77304284d56a2d9a2a1b147cf9c5c6a5c2))
+* **page:** display error message when verify failed ([7027a43](https://github.com/Dannyisadog/nextjs-authjs-template/commit/7027a43f56e377e938bb62466a68d35ca6dd39b7))
+* **page:** display user verification status ([6885888](https://github.com/Dannyisadog/nextjs-authjs-template/commit/688588801cd143e808901012e288730ea55ef7d6))
+* **prisma:** add & update schemas and migrations ([abeda08](https://github.com/Dannyisadog/nextjs-authjs-template/commit/abeda081232e6cd332d41f00e5c7ef918e09a1de))
+* **provider:** add global provider ([68da421](https://github.com/Dannyisadog/nextjs-authjs-template/commit/68da4210c995e5976788a6f829bb52c74c6250fd))
+* **repository:** add update function in user repository ([0f538f1](https://github.com/Dannyisadog/nextjs-authjs-template/commit/0f538f1ca1da12b8d694256e391d791dcc86d349))
+* **repository:** add verification repository ([cfd624a](https://github.com/Dannyisadog/nextjs-authjs-template/commit/cfd624a09d0d71fb276c3e9ed7f41f218d81fcae))
+* **repository:** adjust user update for emailVerified ([5776a95](https://github.com/Dannyisadog/nextjs-authjs-template/commit/5776a95221a09494f71b27dabb5e10b06d2a2fca))
+* **service:** add base email service ([ac7663c](https://github.com/Dannyisadog/nextjs-authjs-template/commit/ac7663cd42d03b0779cf0eb89354308eb862eb90))
+* **service:** add send welcome email service ([be26376](https://github.com/Dannyisadog/nextjs-authjs-template/commit/be26376cf3882c64d4fcce63bc563441e85bb674))
+* **service:** add service to send verification email ([e5052e4](https://github.com/Dannyisadog/nextjs-authjs-template/commit/e5052e47d9322bf9bebc9e42187f9d10ed346878))
+* **service:** add verification service ([ebe99c2](https://github.com/Dannyisadog/nextjs-authjs-template/commit/ebe99c22a7ea4067bd177da392936baac5783e94))
+
+
+### Bug Fixes
+
+* **api:** return error response when exception happened ([2f8a614](https://github.com/Dannyisadog/nextjs-authjs-template/commit/2f8a614b8b8b1fd5759dd12479778bcce0e542b1))
+* **repository:** remove condition to check user exist ([0aa67c0](https://github.com/Dannyisadog/nextjs-authjs-template/commit/0aa67c05636a888ad1fc7f2d2985104f1a8904c0))
+* **service:** throw error when verify token failed ([cf1b1e7](https://github.com/Dannyisadog/nextjs-authjs-template/commit/cf1b1e7672a0c042c292b8d0e248b16420d62c10))
+
 ## [0.3.0](https://github.com/Dannyisadog/nextjs-authjs-template/compare/v0.2.0...v0.3.0) (2024-08-30)
 
 
