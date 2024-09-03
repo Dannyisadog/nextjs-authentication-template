@@ -31,7 +31,7 @@ export default function Verify(props: VerifyProps) {
       const data = await response.json();
       setError(data.message);
     }
-  }, [router, token]);
+  }, [router, token, setError]);
 
   useEffect(() => {
     verify();
