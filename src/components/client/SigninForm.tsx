@@ -80,9 +80,16 @@ export function SigninForm() {
             setPassword(e.target.value);
           }}
         />
-        <Stack direction="row" justifyContent="end">
+        <Stack direction="row" justifyContent="space-between">
+          <Link href="/forgotPassword">
+            <Typography variant="body2" color="primary">
+              Forgot password?
+            </Typography>
+          </Link>
           <Link href="/register">
-            <Typography color="primary">register</Typography>
+            <Typography variant="body2" color="primary">
+              Register
+            </Typography>
           </Link>
         </Stack>
         <Button isLoading={loading} fullWidth type="submit" variant="contained">
