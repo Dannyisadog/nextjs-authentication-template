@@ -2,10 +2,10 @@ import { auth } from "auth";
 import GoogleSigninButton from "components/client/GoogleSigninButton";
 import { SigninForm } from "components/client/SigninForm";
 import { redirect } from "next/navigation";
-import { Stack } from "@mui/material";
 import Title from "components/client/Title";
 import GithubSigninButton from "components/client/GithubSigninButton";
 import FacebookSigninButton from "components/client/FacebookSigninButton";
+import LineSigninButton from "components/client/LineSigninButton";
 
 export default async function Signin() {
   const session = await auth();
@@ -21,6 +21,7 @@ export default async function Signin() {
       <GoogleSigninButton />
       <GithubSigninButton />
       <FacebookSigninButton />
+      <LineSigninButton />
     </>
   );
 }
