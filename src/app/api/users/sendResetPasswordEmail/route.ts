@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export const POST = async (req: NextRequest) => {
   const { email } = await req.json();
 
-  sendResetPasswordEmail(email);
+  await sendResetPasswordEmail(email);
 
   return NextResponse.json({ message: "Email sent" });
 };
