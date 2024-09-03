@@ -12,32 +12,32 @@ import { useProvider } from "providers/Provider";
 const UserAvatar = () => {
   const { session } = useProvider();
 
-  const { user } = session;
+  const { authUser } = session;
 
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  if (!user) {
+  if (!authUser) {
     return null;
   }
 
-  const svgCode = multiavatar(user.email as string);
+  const svgCode = multiavatar(authUser.email as string);
 
   return (
     <Box position="relative" width={64}>
-      {!user.image && (
+      {!authUser.image && (
         <Box
           dangerouslySetInnerHTML={{ __html: svgCode }}
           width={64}
           height={64}
         />
       )}
-      {user.image && (
+      {authUser.image && (
         <Box width={64} height={64} borderRadius={100} overflow="hidden">
           <Image
-            src={user.image}
+            src={authUser.image}
             width={64}
             height={64}
-            alt={`Avatar for ${user.name}`}
+            alt={`Avatar for ${authUser.name}`}
             style={{
               objectFit: "cover",
             }}

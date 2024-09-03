@@ -4,10 +4,11 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { ProviderContextType } from "./constants";
 import { Session, User } from "next-auth";
 import { getSession } from "next-auth/react";
+import { CustomSession } from "auth";
 
 interface ProviderProps {
   children: React.ReactNode;
-  session: Session;
+  session: CustomSession;
 }
 
 const ProviderContext = createContext<ProviderContextType>(
@@ -19,12 +20,12 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const Provider = (props: ProviderProps) => {
   const { children, session } = props;
 
-  const [currentSession, setCurrentSession] = useState<Session>(session);
+  const [currentSession, setCurrentSession] = useState<CustomSession>(session);
 
   const [users, setUsers] = useState<User[]>([]);
 
   const updateSession = async () => {
-    const newSession = await getSession();
+    const newSession = (await getSession()) as CustomSession;
 
     if (!newSession) return;
 
