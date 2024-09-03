@@ -3,8 +3,8 @@
 import { signIn } from "next-auth/react";
 import Button from "./Button";
 import { Stack, Typography } from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function FacebookSigninButton() {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,13 @@ export default function FacebookSigninButton() {
       }}
     >
       <Stack direction="row" spacing={1}>
-        <FacebookIcon />
+        <Image
+          src="/ic-facebook.png"
+          alt="Facebook"
+          width={24}
+          height={24}
+          priority
+        />
         <Typography>Sign in with Facebook</Typography>
       </Stack>
     </Button>

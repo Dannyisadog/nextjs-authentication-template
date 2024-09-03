@@ -3,8 +3,8 @@
 import { signIn } from "next-auth/react";
 import Button from "./Button";
 import { Stack, Typography } from "@mui/material";
-import GoogleIcon from "@mui/icons-material/Google";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function GoogleSigninButton() {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,13 @@ export default function GoogleSigninButton() {
       }}
     >
       <Stack direction="row" spacing={1}>
-        <GoogleIcon />
+        <Image
+          src="/ic-google.png"
+          alt="Google"
+          width={24}
+          height={24}
+          priority
+        />
         <Typography>Sign in with Google</Typography>
       </Stack>
     </Button>
