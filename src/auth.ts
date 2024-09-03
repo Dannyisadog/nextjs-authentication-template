@@ -6,6 +6,7 @@ import NextAuth, {
 import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Faacebook from "next-auth/providers/facebook";
+import Line from "next-auth/providers/line";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { create as createUser, get as getUser } from "app/repository/user";
@@ -35,6 +36,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
     Faacebook({
       allowDangerousEmailAccountLinking: true,
+    }),
+    Line({
+      allowDangerousEmailAccountLinking: true,
+      checks: ["state"],
     }),
     Credentials({
       async authorize({ email, password }) {
