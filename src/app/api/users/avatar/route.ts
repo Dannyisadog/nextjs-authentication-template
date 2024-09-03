@@ -52,8 +52,6 @@ export const PUT = auth(async (req) => {
 
   const dbUser = await get({ email: user.email as string });
 
-  console.log(req.body);
-
   const { image } = await req.json();
 
   if (!image) {
