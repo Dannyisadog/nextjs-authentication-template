@@ -3,8 +3,8 @@
 import { signIn } from "next-auth/react";
 import Button from "./Button";
 import { Stack, Typography } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function GithubSigninButton() {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,13 @@ export default function GithubSigninButton() {
       }}
     >
       <Stack direction="row" spacing={1}>
-        <GitHubIcon />
+        <Image
+          src="/ic-github.png"
+          alt="Github"
+          width={24}
+          height={24}
+          priority
+        />
         <Typography>Sign in with Github</Typography>
       </Stack>
     </Button>
