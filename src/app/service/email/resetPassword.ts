@@ -10,7 +10,7 @@ export const sendResetPasswordEmail = async (email: string) => {
 
   const user = await get({ email });
 
-  sendEmail({
+  await sendEmail({
     to: [email],
     subject,
     template: ResetPasswordEmail({
