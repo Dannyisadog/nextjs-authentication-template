@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { Stack } from "@mui/material";
 import Title from "components/client/Title";
 import GithubSigninButton from "components/client/GithubSigninButton";
+import FacebookSigninButton from "components/client/FacebookSigninButton";
 
 export default async function Signin() {
   const session = await auth();
@@ -19,6 +20,7 @@ export default async function Signin() {
       <SigninForm />
       <GoogleSigninButton />
       <GithubSigninButton />
+      <FacebookSigninButton />
     </>
   );
 }
