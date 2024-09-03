@@ -1,4 +1,5 @@
 import { PrismaClient, User } from "@prisma/client";
+import { verifyResetPasswordToken } from "app/service/resetPassword";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
@@ -163,5 +164,52 @@ export const update = async ({
       emailVerified,
       password,
     },
+  });
+};
+
+interface ResetPasswordParams {
+  token: string;
+  password: string;
+  passwordConfirm: string;
+}
+
+export const resetPassword = async (params: ResetPasswordParams) => {
+  const { token, password, passwordConfirm } = params;
+
+  const { data } = verifyResetPasswordToken(token);
+
+  const { email } = data;
+
+  if (!token) {
+    throw new Error("Token is required");
+  }
+
+  if (!password) {
+    throw new Error("Password is required");
+  }
+
+  if (password.length < 8) {
+    throw new Error("Password must be at least 8 characters");
+  }
+
+  if (!passwordConfirm) {
+    throw new Error("Password confirmation is required");
+  }
+
+  if (password !== passwordConfirm) {
+    throw new Error("Passwords do not match");
+  }
+
+  const user = await get({ email });
+
+  bcrypt.hash(password, saltRounds, async function (err, hash) {
+    if (err) {
+      throw new Error("Error hashing password");
+    }
+
+    await update({
+      id: user.id,
+      password: hash,
+    });
   });
 };
