@@ -1,7 +1,8 @@
-import { Session, User } from "next-auth";
+import { CustomSession } from "auth";
+import { User } from "next-auth";
 
 export interface ProviderContextType {
-  session: Session;
+  session: CustomSession;
   updateSession: () => void;
   users: User[];
   updateUsers: () => void;
