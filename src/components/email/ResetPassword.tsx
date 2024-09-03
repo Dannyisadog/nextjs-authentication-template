@@ -21,8 +21,8 @@ export const ResetPasswordEmail = (props: ResetPasswordEmailProps) => {
           />
           <p style={paragraph}>Hi {firstName},</p>
           <p style={paragraph}>
-            We received a request to reset your password. If you didn't make the
-            request, you can ignore this email.
+            We received a request to reset your password. If you didn{"'"}t make
+            the request, you can ignore this email.
           </p>
           <section style={btnContainer}>
             <a style={button} href={`${url}/resetPassword?token=${token}`}>
